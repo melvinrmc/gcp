@@ -1,6 +1,26 @@
+
+variable "MY_GCP_CREDENTIALS" {
+  type = string  
+}
+
+variable "MY_PROJECT_ID" {
+  type = string  
+}
+
+variable "MY_REGION" {
+  type = string  
+}
+
+provider "google" {
+  credentials = var.MY_GCP_CREDENTIALS
+  project     = var.MY_PROJECT_ID
+  region      = var.MY_REGION
+}
+
+
 resource "google_container_cluster" "primary" {
   name     = "my-gke-cluster"
-  location = "us-central1"
+  location = var.MY_REGION
 
   # We can't create a cluster with no node pool defined, but we want to only use
   # separately managed node pools. So we create the smallest possible default
