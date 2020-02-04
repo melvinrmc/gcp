@@ -11,6 +11,10 @@ variable "MY_REGION" {
   type = string  
 }
 
+variable "MY_CLUSTER_NAME" {
+  type = string  
+}
+
 provider "google" {
   credentials = var.MY_GCP_CREDENTIALS
   project     = var.MY_PROJECT_ID
